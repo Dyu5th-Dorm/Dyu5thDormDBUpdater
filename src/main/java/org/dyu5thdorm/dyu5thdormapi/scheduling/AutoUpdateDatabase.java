@@ -1,5 +1,8 @@
 package org.dyu5thdorm.dyu5thdormapi.scheduling;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.dyu5thdorm.RoomDataFetcher.RoomDataFetcher;
 import org.dyu5thdorm.RoomDataFetcher.models.DataFetchingParameter;
 import org.dyu5thdorm.RoomDataFetcher.models.Room;
@@ -25,11 +28,9 @@ import java.util.List;
 @Component
 @PropertySource("classpath:setting.properties")
 public class AutoUpdateDatabase {
-    static {
-        dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    }
 
-    public static SimpleDateFormat dateFormat;
+    @Value("${date.format}")
+    private SimpleDateFormat dateFormat;
     @Value("${login.id}")
     private String id;
     @Value("${login.password}")
@@ -39,15 +40,10 @@ public class AutoUpdateDatabase {
     @Value("${fetch.s_smty}")
     private String s_smty;
 
-    private final StudentRepository studentRepository;
-    private final BedRepository bedRepository;
-    private final LivingRecordRepository livingRecordRepository;
+    @Autowired private StudentRepository studentRepository;
+    @Autowired private BedRepository bedRepository;
+    @Autowired private LivingRecordRepository livingRecordRepository;
 
-    public AutoUpdateDatabase(StudentRepository studentRepository, BedRepository bedRepository, LivingRecordRepository livingRecordRepository) {
-        this.studentRepository = studentRepository;
-        this.bedRepository = bedRepository;
-        this.livingRecordRepository = livingRecordRepository;
-    }
 
     @Scheduled(fixedRateString = "${update.time}")
     void update() {
