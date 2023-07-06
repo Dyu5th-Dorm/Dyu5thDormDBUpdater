@@ -9,13 +9,6 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import java.util.Objects;
 
-@EqualsAndHashCode
-class SchoolTimestampId implements Serializable {
-    private Integer schoolYear;
-    private Integer semester;
-}
-
-
 @Entity
 @Table(name = "school_timestamp")
 @IdClass(SchoolTimestampId.class)

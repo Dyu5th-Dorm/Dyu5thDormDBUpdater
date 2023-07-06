@@ -7,12 +7,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-@EqualsAndHashCode
-class LivingRecordId implements Serializable {
-    private Bed bed;
-    private SchoolTimestamp schoolTimestamp;
-}
-
 @Entity
 @Table(name = "living_record")
 @IdClass(LivingRecordId.class)
