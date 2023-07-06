@@ -16,9 +16,7 @@ class LivingRecordId implements Serializable {
 @Entity
 @Table(name = "living_record")
 @IdClass(LivingRecordId.class)
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
 public class LivingRecord {
     @Id

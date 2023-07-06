@@ -2,10 +2,7 @@ package org.dyu5thdorm.dyu5thdormapi.models;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -22,9 +19,8 @@ class SchoolTimestampId implements Serializable {
 @Entity
 @Table(name = "school_timestamp")
 @IdClass(SchoolTimestampId.class)
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
+@NoArgsConstructor
 public class SchoolTimestamp {
     @Id
     @Column(name = "school_year")
@@ -39,12 +35,4 @@ public class SchoolTimestamp {
 
     @Column(name = "end_time")
     private LocalDateTime endTime;
-
-    public SchoolTimestamp() {
-    }
-
-    public SchoolTimestamp(Integer schoolYear, Integer semester) {
-        this.schoolYear = schoolYear;
-        this.semester = semester;
-    }
 }

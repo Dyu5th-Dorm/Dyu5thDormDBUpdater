@@ -7,10 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "student")
-@Getter
-@Setter
-@EqualsAndHashCode
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
 public class Student {
 
