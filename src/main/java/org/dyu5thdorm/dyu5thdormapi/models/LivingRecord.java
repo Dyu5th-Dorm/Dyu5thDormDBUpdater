@@ -2,15 +2,18 @@ package org.dyu5thdorm.dyu5thdormapi.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.proxy.HibernateProxy;
+import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "living_record")
 @IdClass(LivingRecordId.class)
-@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 public class LivingRecord {
     @Id

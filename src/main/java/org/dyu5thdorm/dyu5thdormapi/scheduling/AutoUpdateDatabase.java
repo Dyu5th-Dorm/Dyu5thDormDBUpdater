@@ -1,8 +1,5 @@
 package org.dyu5thdorm.dyu5thdormapi.scheduling;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.dyu5thdorm.RoomDataFetcher.RoomDataFetcher;
 import org.dyu5thdorm.RoomDataFetcher.models.DataFetchingParameter;
 import org.dyu5thdorm.RoomDataFetcher.models.Room;
@@ -13,7 +10,6 @@ import org.dyu5thdorm.dyu5thdormapi.models.Student;
 import org.dyu5thdorm.dyu5thdormapi.repositories.BedRepository;
 import org.dyu5thdorm.dyu5thdormapi.repositories.LivingRecordRepository;
 import org.dyu5thdorm.dyu5thdormapi.repositories.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -22,6 +18,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -40,12 +37,17 @@ public class AutoUpdateDatabase {
     @Value("${fetch.s_smty}")
     private String s_smty;
 
-    @Autowired private StudentRepository studentRepository;
-    @Autowired private BedRepository bedRepository;
-    @Autowired private LivingRecordRepository livingRecordRepository;
+    private final StudentRepository studentRepository;
+    private final BedRepository bedRepository;
+    private final LivingRecordRepository livingRecordRepository;
 
+    public AutoUpdateDatabase(StudentRepository studentRepository, BedRepository bedRepository, LivingRecordRepository livingRecordRepository) {
+        this.studentRepository = studentRepository;
+        this.bedRepository = bedRepository;
+        this.livingRecordRepository = livingRecordRepository;
+    }
 
-    @Scheduled(fixedRateString = "${update.time}")
+    @Scheduled(cron = "${update.time}")
     void update() {
         try {
             List<Room> data = RoomDataFetcher.getData(
@@ -78,8 +80,9 @@ public class AutoUpdateDatabase {
                 livingRecordRepository.save(livingRecord);
             }
 
-            System.out.println(dateFormat.format(new Date()) + " updated...");
+            System.out.printf("{y: %s, s: %s, t: %s} => OK%n", s_smye, s_smty, dateFormat.format(new Date()));
         } catch (IOException | ParseException e) {
+            System.out.printf("{y: %s, s: %s, t: %s} => ERROR%n", s_smye, s_smty, dateFormat.format(new Date()));
             throw new RuntimeException(e);
         }
     }

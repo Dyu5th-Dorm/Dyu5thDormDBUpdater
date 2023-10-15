@@ -6,13 +6,12 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-import java.io.Serializable;
-import java.util.Objects;
-
 @Entity
 @Table(name = "school_timestamp")
 @IdClass(SchoolTimestampId.class)
-@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 public class SchoolTimestamp {
     @Id

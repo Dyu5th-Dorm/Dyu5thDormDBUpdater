@@ -8,7 +8,9 @@ import lombok.*;
 
 @Entity
 @Table(name = "bed")
-@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 public class Bed {
     @Id

@@ -1,13 +1,16 @@
 package org.dyu5thdorm.dyu5thdormapi.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "student")
-@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 public class Student {
 
