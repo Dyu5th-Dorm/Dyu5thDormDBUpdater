@@ -31,9 +31,9 @@
         <dependency>
             <groupId>org.dyu5thdorm</groupId>
             <artifactId>RoomDataFecher</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
             <scope>system</scope>
-            <systemPath>${basedir}/dep/RoomDataFetcher-1.0.3.jar</systemPath>
+            <systemPath>${basedir}/dep/RoomDataFetcher-1.0.4.jar</systemPath>
         </dependency>
 
         <dependency>

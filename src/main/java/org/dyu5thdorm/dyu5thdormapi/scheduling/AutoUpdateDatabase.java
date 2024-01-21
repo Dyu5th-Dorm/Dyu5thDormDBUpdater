@@ -1,7 +1,8 @@
 package org.dyu5thdorm.dyu5thdormapi.scheduling;
 
+import jakarta.annotation.PostConstruct;
 import org.dyu5thdorm.RoomDataFetcher.RoomDataFetcher;
-import org.dyu5thdorm.RoomDataFetcher.models.DataFetchingParameter;
+import org.dyu5thdorm.RoomDataFetcher.models.LoginParameter;
 import org.dyu5thdorm.RoomDataFetcher.models.Room;
 import org.dyu5thdorm.dyu5thdormapi.models.Bed;
 import org.dyu5thdorm.dyu5thdormapi.models.LivingRecord;
@@ -18,7 +19,6 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -48,13 +48,15 @@ public class AutoUpdateDatabase {
     }
 
     @Scheduled(cron = "${update.time}")
+    @PostConstruct
     void update() {
         try {
             List<Room> data = RoomDataFetcher.getData(
-                    new DataFetchingParameter(id, password, s_smye, s_smty)
+                    new LoginParameter(id, password, s_smye, s_smty)
             );
 
             for (Room datum : data) {
+                System.out.println(datum);
                 Bed bed = new Bed();
                 bed.setBedId(datum.roomId());
                 bedRepository.save(bed);
