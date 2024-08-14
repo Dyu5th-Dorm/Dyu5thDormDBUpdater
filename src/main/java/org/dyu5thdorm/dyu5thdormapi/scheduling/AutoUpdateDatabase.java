@@ -3,7 +3,6 @@ package org.dyu5thdorm.dyu5thdormapi.scheduling;
 import jakarta.annotation.PostConstruct;
 import org.dyu5thdorm.RoomDataFetcher.RoomDataFetcher;
 import org.dyu5thdorm.RoomDataFetcher.models.LoginParameter;
-import org.dyu5thdorm.RoomDataFetcher.models.Room;
 import org.dyu5thdorm.dyu5thdormapi.models.Bed;
 import org.dyu5thdorm.dyu5thdormapi.models.LivingRecord;
 import org.dyu5thdorm.dyu5thdormapi.models.SchoolTimestamp;
@@ -51,14 +50,14 @@ public class AutoUpdateDatabase {
     @PostConstruct
     void update() {
         try {
-            List<Room> data = RoomDataFetcher.getData(
+            List<org.dyu5thdorm.RoomDataFetcher.models.Bed> data = RoomDataFetcher.getData(
                     new LoginParameter(id, password, s_smye, s_smty)
             );
 
-            for (Room datum : data) {
+            for (org.dyu5thdorm.RoomDataFetcher.models.Bed datum : data) {
                 System.out.println(datum);
                 Bed bed = new Bed();
-                bed.setBedId(datum.roomId());
+                bed.setBedId(datum.bedId());
                 bedRepository.save(bed);
 
                 Student student = null;
