@@ -30,12 +30,12 @@ public class Student {
     @Column(name = "citizenship", nullable = false)
     private String citizenship;
 
-    public Student(org.dyu5thdorm.RoomDataFetcher.models.Student student) {
-        this.studentId = student.studentId();
-        this.name = student.name();
-        this.sex = student.sex();
-        this.major = student.major();
-        this.citizenship = student.citizenship();
+    public Student(com.github.nutt1101.models.Student student) {
+        this.studentId = student.getId();
+        this.name = student.getName();
+        this.sex = student.getSex();
+        this.major = student.getMajor();
+        this.citizenship = student.getCitizenship();
     }
 }
 

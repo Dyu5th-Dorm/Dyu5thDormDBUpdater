@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 
@@ -32,8 +33,5 @@ public class LivingRecord {
             @JoinColumn(name = "semester", referencedColumnName = "semester")
     })
     private SchoolTimestamp schoolTimestamp;
-
-    @Column(name = "update_time")
-    private Date updateTime;
 }
 

@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.dyu5thdorm</groupId>
     <artifactId>Dyu5thDormDBUpdater</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
     <name>Dyu5thDormDBUpdater</name>
     <description>Dyu5thDormDBUpdater</description>
     <properties>
@@ -29,11 +29,11 @@
         </dependency>
 
         <dependency>
-            <groupId>org.dyu5thdorm</groupId>
-            <artifactId>RoomDataFecher</artifactId>
-            <version>1.0.5</version>
+            <groupId>com.github.nutt1101</groupId>
+            <artifactId>Dyu5thDormDataApi</artifactId>
+            <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/dep/RoomDataFetcher-1.0.5.jar</systemPath>
+            <systemPath>${basedir}/dep/Dyu5thDormDataApi-1.0.0.jar</systemPath>
         </dependency>
 
         <dependency>
