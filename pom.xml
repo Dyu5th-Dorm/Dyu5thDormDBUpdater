@@ -31,9 +31,9 @@
         <dependency>
             <groupId>com.github.nutt1101</groupId>
             <artifactId>Dyu5thDormDataApi</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
             <scope>system</scope>
-            <systemPath>${basedir}/dep/Dyu5thDormDataApi-1.0.0.jar</systemPath>
+            <systemPath>${basedir}/dep/Dyu5thDormDataApi-1.0.1.jar</systemPath>
         </dependency>
 
         <dependency>

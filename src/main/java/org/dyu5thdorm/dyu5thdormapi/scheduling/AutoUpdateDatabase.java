@@ -80,7 +80,7 @@ public class AutoUpdateDatabase {
                 bedRepository.save(bed);
 
                 Student student = null;
-                if (datum.getStudent() != null) {
+                if (datum.getStudent() != null && datum.getStatus().equalsIgnoreCase("住宿中")) {
                     student = new Student(
                             datum.getStudent()
                     );
