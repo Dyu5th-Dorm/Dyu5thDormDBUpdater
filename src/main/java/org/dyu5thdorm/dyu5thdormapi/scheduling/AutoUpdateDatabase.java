@@ -71,7 +71,10 @@ public class AutoUpdateDatabase {
 
             List<com.github.nutt1101.models.Bed> data = DormDataApi.getBedData(
                     this.loginParameters, this.requestParameters
-            );
+            ).stream().filter(
+                    e -> e.getStatus().equalsIgnoreCase("住宿中") ||
+                        e.getStatus().equalsIgnoreCase("空床")
+                    ).toList();
 
             for (com.github.nutt1101.models.Bed datum : data) {
                 System.out.println(datum);
@@ -80,7 +83,7 @@ public class AutoUpdateDatabase {
                 bedRepository.save(bed);
 
                 Student student = null;
-                if (datum.getStudent() != null && datum.getStatus().equalsIgnoreCase("住宿中")) {
+                if (datum.getStudent() != null) {
                     student = new Student(
                             datum.getStudent()
                     );
